@@ -145,9 +145,9 @@
 
     <script>
         document.getElementById('seminar-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent form from actually submitting
+            event.preventDefault(); 
 
-            // Get values from the form
+            
             const kode = document.getElementById('kode').value;
             const nama_kegiatan = document.getElementById('nama_kegiatan').value;
             const tgl_mulai = document.getElementById('tgl_mulai').value;
@@ -160,7 +160,7 @@
             const pic = document.getElementById('pic').value;
             const deskripsi = document.getElementById('deskripsi').value;
 
-            // Display the result in the result container
+           
             document.getElementById('result-kode').textContent = kode;
             document.getElementById('result-nama_kegiatan').textContent = nama_kegiatan;
             document.getElementById('result-tgl_mulai').textContent = tgl_mulai;
@@ -173,7 +173,7 @@
             document.getElementById('result-pic').textContent = pic;
             document.getElementById('result-deskripsi').textContent = deskripsi;
 
-            // Show the result container
+            
             document.getElementById('result').style.display = 'block';
         });
     </script>
