@@ -122,7 +122,6 @@
             <button type="submit">Daftar</button>
         </form>
 
-        <!-- Tempat untuk menampilkan hasil registrasi -->
         <div id="result" class="result" style="display: none;">
             <h3>Hasil Pendaftaran:</h3>
             <p id="resultNama"></p>
@@ -135,11 +134,11 @@
     </div>
 
     <script>
-        // Fungsi untuk menangani pengiriman form
+        
         document.getElementById('registrationForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // Mencegah form agar tidak submit ke server
+            e.preventDefault(); 
 
-            // Ambil nilai dari form
+            
             var namaLengkap = document.getElementById('nama_lengkap').value;
             var tempatLahir = document.getElementById('tempat_lahir').value;
             var tanggalLahir = document.getElementById('tanggal_lahir').value;
@@ -147,7 +146,6 @@
             var email = document.getElementById('email').value;
             var statusPeserta = document.getElementById('status_peserta').value;
 
-            // Tampilkan hasil pendaftaran
             document.getElementById('resultNama').textContent = "Nama Lengkap: " + namaLengkap;
             document.getElementById('resultTempatLahir').textContent = "Tempat Lahir: " + tempatLahir;
             document.getElementById('resultTanggalLahir').textContent = "Tanggal Lahir: " + tanggalLahir;
@@ -155,7 +153,6 @@
             document.getElementById('resultEmail').textContent = "Email: " + email;
             document.getElementById('resultStatus').textContent = "Status Peserta: " + statusPeserta;
 
-            // Menampilkan hasil pendaftaran
             document.getElementById('result').style.display = 'block';
         });
     </script>
