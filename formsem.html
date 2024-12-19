@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Registrasi Seminar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h2 {
+            color: #0f1010;
+            margin-bottom: 10px;
+        }
+
+        .container {
+            width: 600px;
+            margin: auto;
+            background: #6eb2e0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .form-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        .gender-group {
+            margin-top: 10px;
+        }
+
+        .gender-group label {
+            font-weight: normal;
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        button {
+            background-color: #c2d9f0;
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 3px;
+            font-size: 16px;
+            margin-top: 15px;
+            display: block;
+        }
+
+        button:hover {
+            background-color: #6a9ee7;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Seminar Rembulan 1 September 2017</h2>
+    <div class="container">
+        <div class="form-title">Registrasi Seminar / Workshop</div>
+        <form id="registrationForm">
+            <label for="nama_lengkap">Nama Lengkap:</label>
+            <input type="text" id="nama_lengkap" name="nama_lengkap" required>
+
+            <label for="tempat_lahir">Tempat Lahir:</label>
+            <input type="text" id="tempat_lahir" name="tempat_lahir" required>
+
+            <label for="tanggal_lahir">Tanggal, Lahir:</label>
+            <input type="date" id="tanggal_lahir" name="tanggal_lahir" required>
+
+            <div class="gender-group">
+                <label>Gender:</label>
+                <label><input type="radio" name="gender" value="Laki-Laki" required> Laki-Laki</label>
+                <label><input type="radio" name="gender" value="Perempuan" required> Perempuan</label>
+            </div>
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required>
+
+            <label for="status_peserta">Status Peserta:</label>
+            <select id="status_peserta" name="status_peserta" required>
+                <option value="">Select</option>
+                <option value="Peserta Umum">Peserta Umum</option>
+                <option value="Mahasiswa">Mahasiswa</option>
+                <option value="Pembicara">Pembicara</option>
+            </select>
+
+            <button type="submit">Daftar</button>
+        </form>
+
+        <!-- Tempat untuk menampilkan hasil registrasi -->
+        <div id="result" class="result" style="display: none;">
+            <h3>Hasil Pendaftaran:</h3>
+            <p id="resultNama"></p>
+            <p id="resultTempatLahir"></p>
+            <p id="resultTanggalLahir"></p>
+            <p id="resultGender"></p>
+            <p id="resultEmail"></p>
+            <p id="resultStatus"></p>
+        </div>
+    </div>
+
+    <script>
+        // Fungsi untuk menangani pengiriman form
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Mencegah form agar tidak submit ke server
+
+            // Ambil nilai dari form
+            var namaLengkap = document.getElementById('nama_lengkap').value;
+            var tempatLahir = document.getElementById('tempat_lahir').value;
+            var tanggalLahir = document.getElementById('tanggal_lahir').value;
+            var gender = document.querySelector('input[name="gender"]:checked').value;
+            var email = document.getElementById('email').value;
+            var statusPeserta = document.getElementById('status_peserta').value;
+
+            // Tampilkan hasil pendaftaran
+            document.getElementById('resultNama').textContent = "Nama Lengkap: " + namaLengkap;
+            document.getElementById('resultTempatLahir').textContent = "Tempat Lahir: " + tempatLahir;
+            document.getElementById('resultTanggalLahir').textContent = "Tanggal Lahir: " + tanggalLahir;
+            document.getElementById('resultGender').textContent = "Gender: " + gender;
+            document.getElementById('resultEmail').textContent = "Email: " + email;
+            document.getElementById('resultStatus').textContent = "Status Peserta: " + statusPeserta;
+
+            // Menampilkan hasil pendaftaran
+            document.getElementById('result').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
