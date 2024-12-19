@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Seminar</title>  
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #073b59;
+        }
+
+        .form-container {
+            border: 1px solid #ccc;
+            padding: 21px;
+            width: 500px;
+            margin: auto;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 500px;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #0c148f;
+            border-radius: 3px;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 80px;
+        }
+
+        button {
+            background-color: #060707;
+            color: #fff;
+            border: none;
+            padding: 15px 20px;
+            cursor: pointer;
+            border-radius: 3px;
+            font-size: 15px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #286090;
+        }
+
+        .form-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .result-container {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #b1deed;
+            background-color: #78b8e9;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .result-container h3 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <div class="form-title">Create New Seminar</div>
+        <form id="seminar-form">
+            <label for="kode">Kode:</label>
+            <input type="text" id="kode" name="kode" required>
+
+            <label for="nama_kegiatan">Nama Kegiatan:</label>
+            <input type="text" id="nama_kegiatan" name="nama_kegiatan" required>
+
+            <label for="tgl_mulai">Tanggal Mulai:</label>
+            <input type="date" id="tgl_mulai" name="tgl_mulai" required>
+
+            <label for="tgl_akhir">Tanggal Akhir:</label>
+            <input type="date" id="tgl_akhir" name="tgl_akhir" required>
+
+            <label for="biaya">Biaya:</label>
+            <input type="number" id="biaya" name="biaya" required>
+
+            <label for="tempat">Tempat:</label>
+            <input type="text" id="tempat" name="tempat" required>
+
+            <label for="latitude">Latitude:</label>
+            <input type="text" id="latitude" name="latitude">
+
+            <label for="longitude">Longitude:</label>
+            <input type="text" id="longitude" name="longitude">
+
+            <label for="jenis_kegiatan">Jenis Kegiatan:</label>
+            <select id="jenis_kegiatan" name="jenis_kegiatan" required>
+                <option value="">Select</option>
+                <option value="Seminar">Seminar</option>
+                <option value="Workshop">Workshop</option>
+            </select>
+
+            <label for="pic">PIC:</label>
+            <input type="text" id="pic" name="pic" required>
+
+            <label for="deskripsi">Deskripsi:</label>
+            <textarea id="deskripsi" name="deskripsi"></textarea>
+
+            <button type="submit">Simpan</button>
+        </form>
+    </div>
+
+    <div id="result" class="result-container" style="display:none;">
+        <h3>Seminar Details:</h3>
+        <p><strong>Kode:</strong> <span id="result-kode"></span></p>
+        <p><strong>Nama Kegiatan:</strong> <span id="result-nama_kegiatan"></span></p>
+        <p><strong>Tanggal Mulai:</strong> <span id="result-tgl_mulai"></span></p>
+        <p><strong>Tanggal Akhir:</strong> <span id="result-tgl_akhir"></span></p>
+        <p><strong>Biaya:</strong> <span id="result-biaya"></span></p>
+        <p><strong>Tempat:</strong> <span id="result-tempat"></span></p>
+        <p><strong>Latitude:</strong> <span id="result-latitude"></span></p>
+        <p><strong>Longitude:</strong> <span id="result-longitude"></span></p>
+        <p><strong>Jenis Kegiatan:</strong> <span id="result-jenis_kegiatan"></span></p>
+        <p><strong>PIC:</strong> <span id="result-pic"></span></p>
+        <p><strong>Deskripsi:</strong> <span id="result-deskripsi"></span></p>
+    </div>
+
+    <script>
+        document.getElementById('seminar-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from actually submitting
+
+            // Get values from the form
+            const kode = document.getElementById('kode').value;
+            const nama_kegiatan = document.getElementById('nama_kegiatan').value;
+            const tgl_mulai = document.getElementById('tgl_mulai').value;
+            const tgl_akhir = document.getElementById('tgl_akhir').value;
+            const biaya = document.getElementById('biaya').value;
+            const tempat = document.getElementById('tempat').value;
+            const latitude = document.getElementById('latitude').value;
+            const longitude = document.getElementById('longitude').value;
+            const jenis_kegiatan = document.getElementById('jenis_kegiatan').value;
+            const pic = document.getElementById('pic').value;
+            const deskripsi = document.getElementById('deskripsi').value;
+
+            // Display the result in the result container
+            document.getElementById('result-kode').textContent = kode;
+            document.getElementById('result-nama_kegiatan').textContent = nama_kegiatan;
+            document.getElementById('result-tgl_mulai').textContent = tgl_mulai;
+            document.getElementById('result-tgl_akhir').textContent = tgl_akhir;
+            document.getElementById('result-biaya').textContent = biaya;
+            document.getElementById('result-tempat').textContent = tempat;
+            document.getElementById('result-latitude').textContent = latitude;
+            document.getElementById('result-longitude').textContent = longitude;
+            document.getElementById('result-jenis_kegiatan').textContent = jenis_kegiatan;
+            document.getElementById('result-pic').textContent = pic;
+            document.getElementById('result-deskripsi').textContent = deskripsi;
+
+            // Show the result container
+            document.getElementById('result').style.display = 'block';
+        });
+    </script>
+</body>
+
+</html>
